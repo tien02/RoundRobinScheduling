@@ -153,7 +153,6 @@ void Scheduling(vector<Process> Process_array, int soluongProcess, int time_quan
                 ReadyQueue.erase(ReadyQueue.begin());
 
                 // Kiem tra Process nao yeu cau CPU khi Process truoc dang thuc thi
-                int tick = 0;
                 vector<Process>temp = Process_array;
                 for (int j = 0; j < temp.size(); j++)
                 {
@@ -162,7 +161,6 @@ void Scheduling(vector<Process> Process_array, int soluongProcess, int time_quan
                         ReadyQueue.push_back(temp[j]);
                         Process_array.erase(Process_array.begin());
                     }
-
                 }
 
                 // ReadyQueue duoc track thoa dieu kien duoc phep quay tro lai ReadyQueue
