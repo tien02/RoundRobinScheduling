@@ -24,10 +24,10 @@ void Nhap_Process(vector<Process>& Process_array, int soluongProcess)
 {
     for (int i = 0; i < soluongProcess; i++)
     {
-        int id, arrival_time, burst_time;
-        cout << "Nhap Process ID, Arrival Time, Burst Time: ";
-        cin >> id >> arrival_time >> burst_time;
-        Process_array[i].id = id; // Process ID
+        int arrival_time, burst_time;
+        cout << "Enter Arrival Time, Burst Time: ";
+        cin >> arrival_time >> burst_time;
+        Process_array[i].id = 0; // Process ID
         Process_array[i].arrival_time = arrival_time; //Arrival Time
         Process_array[i].burst_time = burst_time; // Burst Time
     }
@@ -70,6 +70,11 @@ void Sap_xep_Process_theo_Arr(vector<Process>& Process_array, int soluongProcess
             {
                 swap(Process_array[j], Process_array[j + 1]);
             }
+    
+    for (int i = 0; i < soluongProcess; i++)
+    {
+        Process_array[i].id = i;
+    }
 }
 
 // Dinh thoi Round Robin
@@ -110,7 +115,7 @@ void Scheduling(vector<Process> Process_array, int soluongProcess, int time_quan
             if (ReadyQueue.empty() == false)
             {
                 // Kiem tra Process chua tung vao ready queue
-                int idx = ReadyQueue[0].id - 1;
+                int idx = ReadyQueue[0].id;
                 if (flag_in_process[idx] == 0)
                 {
                     start_time[idx] = current_time;
@@ -191,10 +196,10 @@ int main()
     int soluongProcess; // So luong Process
     int time_quantumn;  // Quantumn Time
 
-    cout << "Nhap so luong process: ";
+    cout << "Enter number of Process: ";
     cin >> soluongProcess;
 
-    cout << "Nhap Quantumn time: ";
+    cout << "Enter Quantumn Time: ";
     cin >> time_quantumn;
 
     vector<Process> Process_arr(soluongProcess);
